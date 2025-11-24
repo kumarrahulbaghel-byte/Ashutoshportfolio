@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashutosh Yadav | Data Science & AI Student</title>
+    <meta name="description"
+        content="Portfolio of Ashutosh Yadav, a Data Science and AI student, TechBee Scholar, and IT Engineer.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <canvas id="particles-canvas"></canvas>
+    <div class="cursor"></div>
+    <img src="character.png" class="character-cursor" alt="AI Companion">
+
+    <header>
+        <nav class="navbar">
+            <div class="logo" data-hover>Ashutosh Yadav</div>
+            <ul class="nav-links">
+                <li><a href="#about" data-hover>About</a></li>
+                <li><a href="#skills" data-hover>Skills</a></li>
+                <li><a href="#projects" data-hover>Projects</a></li>
+                <li><a href="#experience" data-hover>Experience</a></li>
+                <li><a href="#education" data-hover>Education</a></li>
+                <li><a href="#contact" data-hover>Contact</a></li>
+                <li><button id="sound-toggle" class="icon-btn" aria-label="Toggle Sound" data-hover><i
+                            class="fas fa-volume-up"></i></button></li>
+            </ul>
+            <div class="hamburger" data-hover>
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="profile-img-container">
+                        <img src="profile.jpg" alt="Ashutosh Yadav" class="profile-img">
+                    </div>
+                    <h1 class="hero-title">Ashutosh Yadav</h1>
+                    <h2 class="hero-subtitle">Data Science and AI Student | IT Engineer</h2>
+                    <p class="hero-tagline">Curious mind. Practical approach. Always building and learning.</p>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary" data-hover>View My Work</a>
+                        <a href="resume/Ashutosh_Resume_MECM (1).pdf" class="btn btn-secondary" download
+                            data-hover>Download
+                            Resume</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-content">
+                    <p>Motivated MECM Administrator and Data Science student with hands-on experience in IT
+                        infrastructure, Azure Cloud, Citrix, and endpoint management. Skilled at solving complex
+                        technical problems, optimizing system performance, and automating processes to make enterprise
+                        environments more efficient. Solid foundation in Python, SQL, and cloud technologies, aiming to
+                        bridge IT operations with data-driven decision-making.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+            <div class="container">
+                <h2 class="section-title">Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Endpoint & Device Management</h3>
+                        <div class="badges">
+                            <span class="badge">MECM (SCCM)</span>
+                            <span class="badge">Intune</span>
+                            <span class="badge">Windows Autopilot</span>
+                            <span class="badge">Citrix (On-Prem & Cloud)</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Cloud & Virtualization</h3>
+                        <div class="badges">
+                            <span class="badge">Microsoft Azure</span>
+                            <span class="badge">VMware</span>
+                            <span class="badge">Azure Foundry</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Programming & Automation</h3>
+                        <div class="badges">
+                            <span class="badge">Python</span>
+                            <span class="badge">C</span>
+                            <span class="badge">Java</span>
+                            <span class="badge">R</span>
+                            <span class="badge">SQL</span>
+                            <span class="badge">n8n Automation</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Data & Analytics</h3>
+                        <div class="badges">
+                            <span class="badge">Machine Learning</span>
+                            <span class="badge">Data Analysis</span>
+                            <span class="badge">Econometrics</span>
+                            <span class="badge">Optimization</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Networking & Systems</h3>
+                        <div class="badges">
+                            <span class="badge">Active Directory</span>
+                            <span class="badge">ITIL</span>
+                            <span class="badge">RDBMS</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Productivity Tools</h3>
+                        <div class="badges">
+                            <span class="badge">Microsoft Office Suite</span>
+                            <span class="badge">Windows/macOS/Linux</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <div class="container">
+                <h2 class="section-title">Projects</h2>
+                <div class="projects-grid">
+                    <!-- Placeholder Project 1 -->
+                    <div class="project-card">
+                        <h3>Project Title 1</h3>
+                        <p>A short description of the project goes here. It explains what the project does and the
+                            problem it solves.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">ML</span>
+                        </div>
+                        <a href="#" class="btn btn-secondary">View Code</a>
+                    </div>
+                    <!-- Placeholder Project 2 -->
+                    <div class="project-card">
+                        <h3>Project Title 2</h3>
+                        <p>Another interesting project description. Highlights key features and technologies used.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">Azure</span>
+                        </div>
+                        <a href="#" class="btn btn-secondary">Live Demo</a>
+                    </div>
+                    <!-- Placeholder Project 3 -->
+                    <div class="project-card">
+                        <h3>Project Title 3</h3>
+                        <p>Description for a third project. Showcasing versatility and skills.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Data Viz</span>
+                            <span class="tech-tag">Python</span>
+                        </div>
+                        <a href="#" class="btn btn-secondary">View Code</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="section">
+            <div class="container">
+                <h2 class="section-title">Experience</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">Oct 2023 – Current</div>
+                        <div class="timeline-content">
+                            <h3>MECM Administrator</h3>
+                            <h4>HCL Technologies Ltd – Lucknow, India</h4>
+                            <p><strong>Key Roles and Responsibilities:</strong></p>
+                            <ul
+                                style="list-style-type: disc; margin-left: 20px; color: var(--text-secondary); margin-top: 10px;">
+                                <li>Worked on on-premises-to-cloud migration of SCCM-managed devices to Intune,
+                                    supporting organizational modernization initiatives.</li>
+                                <li>Monitoring system health, performing patch management, and preparing daily SCCM
+                                    client reports.</li>
+                                <li>Configuring App Protection and Configuration Policies to strengthen endpoint
+                                    security.</li>
+                                <li>Developing remediation scripts to resolve patching issues and improve endpoint
+                                    compliance.</li>
+                                <li>Onboarding new applications into Intune to streamline deployment and enhance
+                                    endpoint productivity.</li>
+                                <li>Implementing Windows Autopilot for pre-provisioned device deployments, simplifying
+                                    user onboarding.</li>
+                                <li>Maintaining seamless access and performance in both On-Prem and Cloud Citrix
+                                    environments.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Oct 2022 – Oct 2023</div>
+                        <div class="timeline-content">
+                            <h3>Training & Internship</h3>
+                            <h4>HCL Training & Staffing Services Pvt. Ltd. – Lucknow, India</h4>
+                            <p>1-year training and internship program conducted by HCL Training and Staffing Services.
+                            </p>
+                            <p style="margin-top: 10px;"><strong>Learnings:</strong> VMware, Azure, RDBMS, Active
+                                Directory, ITIL, Networking.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="section">
+            <div class="container">
+                <h2 class="section-title">Education</h2>
+                <div class="education-list">
+                    <div class="education-item">
+                        <div class="edu-details">
+                            <h3>IIT Guwahati</h3>
+                            <p>Data Science and Artificial Intelligence</p>
+                            <span class="edu-year">Pursuing</span>
+                        </div>
+                    </div>
+                    <div class="education-item">
+                        <div class="edu-details">
+                            <h3>CBSE</h3>
+                            <p>Class 12th</p>
+                            <span class="edu-year">Completed</span>
+                        </div>
+                    </div>
+                    <div class="education-item">
+                        <div class="edu-details">
+                            <h3>CBSE</h3>
+                            <p>Class 10th</p>
+                            <span class="edu-year">Completed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="container">
+                <h2 class="section-title">Contact Me</h2>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" data-hover>Send Message</button>
+                </form>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/ashutosh0001/" target="_blank" aria-label="LinkedIn"
+                        data-hover><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/ashutosh0001" target="_blank" aria-label="GitHub" data-hover><i
+                            class="fab fa-github"></i></a>
+                    <a href="https://www.instagram.com/ashutosh0001" target="_blank" aria-label="Instagram"
+                        data-hover><i class="fab fa-instagram"></i></a>
+                    <a href="mailto:ay346185@gmail.com" aria-label="Email" data-hover><i
+                            class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="year"></span> Ashutosh Yadav. Built with ❤️ and curiosity.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
