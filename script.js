@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     icon.classList.remove('fa-volume-mute');
                     icon.classList.add('fa-volume-up');
                 }
-                // Resume context if suspended (browser policy)
                 if (this.context.state === 'suspended') {
                     this.context.resume();
                 }
@@ -74,25 +73,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- Particle Network Background ---
-    class ParticleNetwork {
+    // --- Premium Cursor-Reactive Background ---
+    class CursorBackground {
         constructor() {
             this.canvas = document.getElementById('particles-canvas');
             this.ctx = this.canvas.getContext('2d');
-            this.particles = [];
+            this.mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+            this.smoothMouse = { x: this.mouse.x, y: this.mouse.y };
+            this.dots = [];
             this.resize();
-            this.initParticles();
+            this.initDots();
             this.animate();
 
             window.addEventListener('resize', () => {
                 this.resize();
-                this.initParticles();
+                this.initDots();
             });
 
-            this.mouse = { x: null, y: null };
             window.addEventListener('mousemove', (e) => {
-                this.mouse.x = e.x;
-                this.mouse.y = e.y;
+                this.mouse.x = e.clientX;
+                this.mouse.y = e.clientY;
             });
         }
 
@@ -101,84 +101,71 @@ document.addEventListener('DOMContentLoaded', () => {
             this.canvas.height = window.innerHeight;
         }
 
-        initParticles() {
-            this.particles = [];
-            const numberOfParticles = (this.canvas.width * this.canvas.height) / 9000;
-            for (let i = 0; i < numberOfParticles; i++) {
-                this.particles.push(new Particle(this.canvas));
+        initDots() {
+            this.dots = [];
+            const count = Math.floor((this.canvas.width * this.canvas.height) / 25000);
+            for (let i = 0; i < count; i++) {
+                this.dots.push({
+                    x: Math.random() * this.canvas.width,
+                    y: Math.random() * this.canvas.height,
+                    baseSize: Math.random() * 1.5 + 0.5,
+                    speedX: (Math.random() - 0.5) * 0.3,
+                    speedY: (Math.random() - 0.5) * 0.3,
+                    opacity: Math.random() * 0.3 + 0.1
+                });
             }
         }
 
         animate() {
             this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-            this.particles.forEach(particle => {
-                particle.update();
-                particle.draw(this.ctx);
-                this.connectParticles(particle);
+
+            // Smooth mouse follow
+            this.smoothMouse.x += (this.mouse.x - this.smoothMouse.x) * 0.08;
+            this.smoothMouse.y += (this.mouse.y - this.smoothMouse.y) * 0.08;
+
+            // Draw cursor glow
+            const gradient = this.ctx.createRadialGradient(
+                this.smoothMouse.x, this.smoothMouse.y, 0,
+                this.smoothMouse.x, this.smoothMouse.y, 350
+            );
+            gradient.addColorStop(0, 'rgba(255, 255, 255, 0.04)');
+            gradient.addColorStop(0.4, 'rgba(255, 255, 255, 0.015)');
+            gradient.addColorStop(1, 'transparent');
+            this.ctx.fillStyle = gradient;
+            this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+            // Update and draw dots
+            this.dots.forEach(dot => {
+                dot.x += dot.speedX;
+                dot.y += dot.speedY;
+
+                if (dot.x > this.canvas.width) dot.x = 0;
+                if (dot.x < 0) dot.x = this.canvas.width;
+                if (dot.y > this.canvas.height) dot.y = 0;
+                if (dot.y < 0) dot.y = this.canvas.height;
+
+                // React to cursor proximity
+                const dx = this.smoothMouse.x - dot.x;
+                const dy = this.smoothMouse.y - dot.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                const maxDist = 200;
+
+                let size = dot.baseSize;
+                let alpha = dot.opacity;
+
+                if (dist < maxDist) {
+                    const factor = 1 - dist / maxDist;
+                    size += factor * 2;
+                    alpha += factor * 0.4;
+                }
+
+                this.ctx.beginPath();
+                this.ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+                this.ctx.arc(dot.x, dot.y, size, 0, Math.PI * 2);
+                this.ctx.fill();
             });
-            this.connectMouse();
+
             requestAnimationFrame(this.animate.bind(this));
-        }
-
-        connectParticles(particle) {
-            this.particles.forEach(p => {
-                const dx = particle.x - p.x;
-                const dy = particle.y - p.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-
-                if (distance < 100) {
-                    this.ctx.beginPath();
-                    this.ctx.strokeStyle = `rgba(0, 243, 255, ${1 - distance / 100})`;
-                    this.ctx.lineWidth = 0.5;
-                    this.ctx.moveTo(particle.x, particle.y);
-                    this.ctx.lineTo(p.x, p.y);
-                    this.ctx.stroke();
-                }
-            });
-        }
-
-        connectMouse() {
-            if (this.mouse.x === null) return;
-            this.particles.forEach(p => {
-                const dx = this.mouse.x - p.x;
-                const dy = this.mouse.y - p.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-
-                if (distance < 150) {
-                    this.ctx.beginPath();
-                    this.ctx.strokeStyle = `rgba(0, 243, 255, ${1 - distance / 150})`;
-                    this.ctx.lineWidth = 0.8;
-                    this.ctx.moveTo(this.mouse.x, this.mouse.y);
-                    this.ctx.lineTo(p.x, p.y);
-                    this.ctx.stroke();
-                }
-            });
-        }
-    }
-
-    class Particle {
-        constructor(canvas) {
-            this.canvas = canvas;
-            this.x = Math.random() * this.canvas.width;
-            this.y = Math.random() * this.canvas.height;
-            this.size = Math.random() * 2 + 1;
-            this.speedX = Math.random() * 1 - 0.5;
-            this.speedY = Math.random() * 1 - 0.5;
-        }
-
-        update() {
-            this.x += this.speedX;
-            this.y += this.speedY;
-
-            if (this.x > this.canvas.width || this.x < 0) this.speedX = -this.speedX;
-            if (this.y > this.canvas.height || this.y < 0) this.speedY = -this.speedY;
-        }
-
-        draw(ctx) {
-            ctx.fillStyle = '#00f3ff';
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fill();
         }
     }
 
@@ -190,7 +177,6 @@ document.addEventListener('DOMContentLoaded', () => {
         cursor.style.left = e.clientX + 'px';
         cursor.style.top = e.clientY + 'px';
 
-        // Smooth delay for character
         setTimeout(() => {
             if (character) {
                 character.style.left = e.clientX + 'px';
@@ -217,27 +203,119 @@ document.addEventListener('DOMContentLoaded', () => {
         heroTitle.setAttribute('data-text', heroTitle.textContent);
     }
 
+    // --- Hamburger Menu Toggle ---
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = hamburger.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close menu when clicking a nav link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = hamburger.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+    }
+
     // --- Initialize ---
     new SoundManager();
-    new ParticleNetwork();
+    new CursorBackground();
 
-    // --- Existing Functionality (Smooth Scroll, Year, Form) ---
+    // --- Typing Effect ---
+    class TypeWriter {
+        constructor(element, phrases, typingSpeed = 80, deletingSpeed = 40, pauseTime = 2000) {
+            this.element = element;
+            this.phrases = phrases;
+            this.typingSpeed = typingSpeed;
+            this.deletingSpeed = deletingSpeed;
+            this.pauseTime = pauseTime;
+            this.phraseIndex = 0;
+            this.charIndex = 0;
+            this.isDeleting = false;
+            this.type();
+        }
+
+        type() {
+            const currentPhrase = this.phrases[this.phraseIndex];
+
+            if (this.isDeleting) {
+                this.charIndex--;
+                this.element.textContent = currentPhrase.substring(0, this.charIndex);
+            } else {
+                this.charIndex++;
+                this.element.textContent = currentPhrase.substring(0, this.charIndex);
+            }
+
+            let speed = this.isDeleting ? this.deletingSpeed : this.typingSpeed;
+
+            if (!this.isDeleting && this.charIndex === currentPhrase.length) {
+                speed = this.pauseTime;
+                this.isDeleting = true;
+            } else if (this.isDeleting && this.charIndex === 0) {
+                this.isDeleting = false;
+                this.phraseIndex = (this.phraseIndex + 1) % this.phrases.length;
+                speed = 400;
+            }
+
+            setTimeout(() => this.type(), speed);
+        }
+    }
+
+    const typedElement = document.getElementById('typed-text');
+    if (typedElement) {
+        new TypeWriter(typedElement, [
+            'MECM Administrator @ HCL Technologies',
+            'Data Science & AI Student @ IIT Guwahati',
+            'Microsoft Certified Azure AI Engineer',
+            'Endpoint Management Specialist',
+        ], 70, 35, 2000);
+    }
+
+    // --- Year, Smooth Scroll, Form ---
     document.getElementById('year').textContent = new Date().getFullYear();
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
         });
     });
 
+    // Contact form with animated success message
     const contactForm = document.getElementById('contactForm');
+    const formSuccess = document.getElementById('formSuccess');
+
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            alert('Thank you for your message! I will get back to you soon.');
+
+            // Show success message
+            if (formSuccess) {
+                formSuccess.classList.add('show');
+
+                // Hide after 4 seconds
+                setTimeout(() => {
+                    formSuccess.classList.remove('show');
+                }, 4000);
+            }
+
             contactForm.reset();
         });
     }

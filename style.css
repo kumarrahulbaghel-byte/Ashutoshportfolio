@@ -1,17 +1,12 @@
 /* Global Styles */
 :root {
     --bg-color: #0a0a0a;
-    /* Matte Black */
     --card-bg: rgba(255, 255, 255, 0.03);
     --card-border: rgba(255, 255, 255, 0.08);
     --text-primary: #e0e0e0;
-    /* Off-White */
     --text-secondary: #888888;
-    /* Silver */
     --accent-primary: #ffffff;
-    /* Pure White */
     --accent-secondary: #cccccc;
-    /* Light Grey */
     --accent-gradient: linear-gradient(135deg, #ffffff, #888888);
     --accent-glow: rgba(255, 255, 255, 0.1);
     --font-main: 'Inter', sans-serif;
@@ -71,7 +66,6 @@ ul {
     font-weight: 500;
     cursor: pointer;
     text-transform: none;
-    /* Remove uppercase for cleaner look */
     letter-spacing: 0.5px;
     font-size: 0.9rem;
     transition: all var(--transition-speed);
@@ -141,11 +135,12 @@ header {
 
 .nav-links {
     display: flex;
-    gap: 40px;
+    gap: 30px;
+    align-items: center;
 }
 
 .nav-links a {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--text-secondary);
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -163,6 +158,7 @@ header {
     font-size: 1.5rem;
     cursor: pointer;
     color: var(--text-primary);
+    z-index: 1001;
 }
 
 /* Hero Section */
@@ -208,7 +204,6 @@ header {
     object-fit: cover;
     border-radius: 50%;
     border: 3px solid var(--bg-color);
-    /* Creates a gap effect */
 }
 
 .hero-title {
@@ -319,13 +314,8 @@ header {
     letter-spacing: 1px;
 }
 
-.skill-badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
 .badge {
+    display: inline-block;
     background: rgba(255, 255, 255, 0.03);
     padding: 6px 12px;
     border-radius: 4px;
@@ -334,6 +324,7 @@ header {
     transition: all 0.3s;
     font-family: var(--font-main);
     color: var(--text-secondary);
+    margin: 3px;
 }
 
 .skill-category:hover .badge {
@@ -367,6 +358,17 @@ header {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
+.project-icon {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: var(--text-secondary);
+    transition: color 0.3s;
+}
+
+.project-card:hover .project-icon {
+    color: var(--accent-primary);
+}
+
 .project-card h3 {
     margin-bottom: 15px;
     color: var(--text-primary);
@@ -390,6 +392,20 @@ header {
     font-size: 0.8rem;
     margin-right: 10px;
     font-family: monospace;
+}
+
+.coming-soon-card {
+    border-style: dashed;
+    opacity: 0.7;
+}
+
+.coming-soon-card:hover {
+    opacity: 1;
+}
+
+.coming-soon-btn {
+    cursor: default;
+    opacity: 0.6;
 }
 
 /* Experience Section */
@@ -477,6 +493,31 @@ header {
     font-size: 0.9rem;
 }
 
+/* Company and Education Logos */
+.company-header,
+.edu-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.company-logo,
+.edu-logo {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    filter: grayscale(100%) brightness(2);
+    opacity: 0.8;
+    transition: all 0.3s;
+}
+
+.timeline-item:hover .company-logo,
+.education-item:hover .edu-logo {
+    filter: grayscale(0%) brightness(1);
+    opacity: 1;
+}
+
 /* Education Section */
 .education-list {
     max-width: 800px;
@@ -512,16 +553,119 @@ header {
     font-size: 0.95rem;
 }
 
-.edu-year {
+.edu-meta {
+    display: inline-block;
     color: var(--accent-primary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-right: 15px;
+}
+
+.edu-year {
+    color: var(--text-secondary);
     font-size: 0.85rem;
     font-weight: 600;
+}
+
+/* Certifications Section */
+.certs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.cert-card {
+    background: var(--card-bg);
+    padding: 28px;
+    border-radius: 8px;
+    border: 1px solid var(--card-border);
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    backdrop-filter: blur(10px);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.cert-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--accent-gradient);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.cert-card:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.cert-card:hover::before {
+    opacity: 1;
+}
+
+.cert-icon {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: var(--text-secondary);
+    transition: color 0.3s;
+}
+
+.cert-card:hover .cert-icon {
+    color: var(--accent-primary);
+}
+
+.cert-card h3 {
+    font-size: 1rem;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.cert-code {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-family: monospace;
+    margin-bottom: 12px;
+}
+
+.cert-date {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+}
+
+.cert-level {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cert-associate {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--accent-primary);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cert-fundamentals {
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-secondary);
+    border: 1px solid var(--card-border);
 }
 
 /* Contact Section */
 .contact-form {
     max-width: 600px;
     margin: 0 auto 50px;
+    position: relative;
 }
 
 .form-group {
@@ -551,6 +695,37 @@ header {
     outline: none;
     border-color: var(--accent-primary);
     background-color: rgba(255, 255, 255, 0.05);
+}
+
+.form-success {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--accent-primary);
+    font-size: 0.95rem;
+    animation: fadeInUp 0.5s ease;
+}
+
+.form-success.show {
+    display: flex;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .social-links {
@@ -586,6 +761,25 @@ footer {
 @media (max-width: 768px) {
     .nav-links {
         display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 260px;
+        height: 100vh;
+        background: rgba(10, 10, 10, 0.97);
+        backdrop-filter: blur(20px);
+        padding: 80px 30px 30px;
+        gap: 25px;
+        border-left: 1px solid var(--card-border);
+        z-index: 1000;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+    }
+
+    .nav-links.active {
+        display: flex;
+        transform: translateX(0);
     }
 
     .hamburger {
@@ -594,6 +788,10 @@ footer {
 
     .hero-title {
         font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.9rem;
     }
 
     .timeline::after {
@@ -614,6 +812,10 @@ footer {
         text-align: left;
     }
 
+    .timeline-item:nth-child(even) {
+        left: 0;
+    }
+
     .education-item {
         flex-direction: column;
         align-items: flex-start;
@@ -622,6 +824,19 @@ footer {
 
     .edu-year {
         align-self: flex-start;
+    }
+
+    .certs-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
     }
 }
 
@@ -660,7 +875,6 @@ footer {
     transform: translate(-50%, -50%);
     transition: width 0.3s, height 0.3s;
     mix-blend-mode: normal;
-    /* Gradient doesn't mix well with difference */
 }
 
 .character-cursor {
@@ -672,7 +886,6 @@ footer {
     transform: translate(-50%, -50%);
     transition: transform 0.1s ease-out, width 0.3s, height 0.3s;
     filter: grayscale(100%) brightness(1.2);
-    /* Make character monochrome */
     animation: float 3s ease-in-out infinite;
     opacity: 0.8;
 }
@@ -694,7 +907,7 @@ footer {
     }
 }
 
-/* Glitch Effect Removed for Minimalist Theme */
+/* Glitch Effect */
 .glitch {
     position: relative;
 }
@@ -712,48 +925,303 @@ footer {
 .icon-btn:hover {
     color: var(--accent-primary);
 }
-/* Company and Education Logos */
-.company-header, .edu-header {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 15px;
+
+/* =============================================
+   PREMIUM ANIMATIONS (Antigravity-style)
+   ============================================= */
+
+/* --- Hero Reveal Animation --- */
+.anim-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: revealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: var(--delay, 0s);
 }
 
-.company-logo, .edu-logo {
-    width: 50px;
-    height: 50px;
-    object-fit: contain;
-    filter: grayscale(100%) brightness(2);
-    opacity: 0.8;
-    transition: all 0.3s;
+@keyframes revealUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+        filter: blur(4px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
 }
 
-.timeline-item:hover .company-logo,
-.education-item:hover .edu-logo {
-    filter: grayscale(0%) brightness(1);
+/* --- Floating Profile Image --- */
+.anim-float {
+    animation: levitate 6s ease-in-out infinite, fadeInScale 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+}
+
+@keyframes levitate {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* --- Profile Ring Glow --- */
+.profile-ring {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    background: conic-gradient(from 0deg, transparent, rgba(255, 255, 255, 0.5), transparent, rgba(255, 255, 255, 0.3), transparent) border-box;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: rotateRing 4s linear infinite;
+}
+
+@keyframes rotateRing {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* --- Typing Cursor --- */
+.typing-cursor {
+    animation: blink 0.7s step-end infinite;
+    font-weight: 300;
+    color: var(--accent-primary);
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+/* --- Glowing CTA Button --- */
+.btn-glow {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-glow::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    border-radius: 6px;
+    z-index: -1;
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    50% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* --- Staggered Card Entrance --- */
+.skill-category,
+.project-card,
+.cert-card,
+.education-item,
+.timeline-item {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.3s,
+        box-shadow 0.3s;
+}
+
+.section.visible .skill-category,
+.section.visible .project-card,
+.section.visible .cert-card,
+.section.visible .education-item,
+.section.visible .timeline-item {
     opacity: 1;
+    transform: translateY(0);
 }
 
-/* Company and Education Logos */
-.company-header, .edu-header {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 15px;
+.section.visible .skill-category:nth-child(1),
+.section.visible .project-card:nth-child(1),
+.section.visible .cert-card:nth-child(1),
+.section.visible .education-item:nth-child(1),
+.section.visible .timeline-item:nth-child(1) {
+    transition-delay: 0.1s;
 }
 
-.company-logo, .edu-logo {
-    width: 50px;
-    height: 50px;
-    object-fit: contain;
-    filter: grayscale(100%) brightness(2);
-    opacity: 0.8;
-    transition: all 0.3s;
+.section.visible .skill-category:nth-child(2),
+.section.visible .project-card:nth-child(2),
+.section.visible .cert-card:nth-child(2),
+.section.visible .education-item:nth-child(2),
+.section.visible .timeline-item:nth-child(2) {
+    transition-delay: 0.2s;
 }
 
-.timeline-item:hover .company-logo,
-.education-item:hover .edu-logo {
-    filter: grayscale(0%) brightness(1);
+.section.visible .skill-category:nth-child(3),
+.section.visible .project-card:nth-child(3),
+.section.visible .cert-card:nth-child(3),
+.section.visible .education-item:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+.section.visible .skill-category:nth-child(4),
+.section.visible .cert-card:nth-child(4) {
+    transition-delay: 0.4s;
+}
+
+.section.visible .skill-category:nth-child(5),
+.section.visible .cert-card:nth-child(5) {
+    transition-delay: 0.5s;
+}
+
+.section.visible .skill-category:nth-child(6),
+.section.visible .cert-card:nth-child(6) {
+    transition-delay: 0.6s;
+}
+
+/* --- Gradient Border Glow on Hover --- */
+.project-card:hover,
+.cert-card:hover,
+.skill-category:hover {
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.06),
+        0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* --- Badge Pop-In --- */
+.badge {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.section.visible .badge {
     opacity: 1;
+    transform: scale(1);
+}
+
+.section.visible .badge:nth-child(1) {
+    transition-delay: 0.15s;
+}
+
+.section.visible .badge:nth-child(2) {
+    transition-delay: 0.25s;
+}
+
+.section.visible .badge:nth-child(3) {
+    transition-delay: 0.35s;
+}
+
+.section.visible .badge:nth-child(4) {
+    transition-delay: 0.45s;
+}
+
+.section.visible .badge:nth-child(5) {
+    transition-delay: 0.55s;
+}
+
+.section.visible .badge:nth-child(6) {
+    transition-delay: 0.65s;
+}
+
+/* --- Section Title Reveal --- */
+.section-title {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.section.visible .section-title {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.section-title::after {
+    transform: scaleX(0);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+}
+
+.section.visible .section-title::after {
+    transform: scaleX(1);
+}
+
+/* --- About Content Reveal --- */
+.about-content {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s,
+        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+}
+
+.section.visible .about-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Smooth Hover Micro-Interactions --- */
+.btn:active {
+    transform: translateY(-1px);
+    transition-duration: 0.1s;
+}
+
+.social-links a:hover {
+    transform: translateY(-5px) scale(1.1);
+}
+
+/* --- Smooth page load --- */
+body {
+    animation: pageLoad 0.6s ease-out;
+}
+
+@keyframes pageLoad {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }

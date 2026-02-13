@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ashutosh Yadav | Data Science & AI Student</title>
     <meta name="description"
-        content="Portfolio of Ashutosh Yadav, a Data Science and AI student, TechBee Scholar, and IT Engineer.">
+        content="Portfolio of Ashutosh Yadav — MECM Administrator at HCL Technologies, Data Science & AI student at IIT Guwahati, and Microsoft Certified Professional.">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,17 +26,18 @@
     <header>
         <nav class="navbar">
             <div class="logo" data-hover>Ashutosh Yadav</div>
-            <ul class="nav-links">
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#about" data-hover>About</a></li>
                 <li><a href="#skills" data-hover>Skills</a></li>
                 <li><a href="#projects" data-hover>Projects</a></li>
                 <li><a href="#experience" data-hover>Experience</a></li>
                 <li><a href="#education" data-hover>Education</a></li>
+                <li><a href="#certifications" data-hover>Certs</a></li>
                 <li><a href="#contact" data-hover>Contact</a></li>
                 <li><button id="sound-toggle" class="icon-btn" aria-label="Toggle Sound" data-hover><i
                             class="fas fa-volume-up"></i></button></li>
             </ul>
-            <div class="hamburger" data-hover>
+            <div class="hamburger" id="hamburger" data-hover>
                 <i class="fas fa-bars"></i>
             </div>
         </nav>
@@ -46,17 +47,20 @@
         <section id="hero" class="hero-section">
             <div class="container">
                 <div class="hero-content">
-                    <div class="profile-img-container">
+                    <div class="profile-img-container anim-float">
                         <img src="profile.jpg" alt="Ashutosh Yadav" class="profile-img">
+                        <div class="profile-ring"></div>
                     </div>
-                    <h1 class="hero-title">Ashutosh Yadav</h1>
-                    <h2 class="hero-subtitle">Data Science and AI Student | IT Engineer</h2>
-                    <p class="hero-tagline">Curious mind. Practical approach. Always building and learning.</p>
-                    <div class="hero-buttons">
-                        <a href="#projects" class="btn btn-primary" data-hover>View My Work</a>
-                        <a href="resume/Ashutosh_Resume_MECM (1).pdf" class="btn btn-secondary" download
-                            data-hover>Download
-                            Resume</a>
+                    <h1 class="hero-title anim-reveal" style="--delay: 0.3s">Ashutosh Yadav</h1>
+                    <h2 class="hero-subtitle anim-reveal" style="--delay: 0.6s">
+                        <span id="typed-text"></span><span class="typing-cursor">|</span>
+                    </h2>
+                    <p class="hero-tagline anim-reveal" style="--delay: 0.9s">Curious mind. Practical approach. Always
+                        building and learning.</p>
+                    <div class="hero-buttons anim-reveal" style="--delay: 1.2s">
+                        <a href="#projects" class="btn btn-primary btn-glow" data-hover>View My Work</a>
+                        <a href="resume/Ashutosh_Yadav_Resume.pdf" class="btn btn-secondary" download
+                            data-hover>Download Resume</a>
                     </div>
                 </div>
             </div>
@@ -139,36 +143,37 @@
             <div class="container">
                 <h2 class="section-title">Projects</h2>
                 <div class="projects-grid">
-                    <!-- Placeholder Project 1 -->
+                    <!-- Project 1: Plant Disease Classification -->
                     <div class="project-card">
-                        <h3>Project Title 1</h3>
-                        <p>A short description of the project goes here. It explains what the project does and the
-                            problem it solves.</p>
+                        <div class="project-icon"><i class="fas fa-leaf"></i></div>
+                        <h3>Plant Disease Classification</h3>
+                        <p>End-to-end web application for detecting diseases in Potato and Tomato leaves using CNN
+                            with TensorFlow/Keras. Features a FastAPI backend for model inference and a React.js
+                            frontend with real-time predictions and history.</p>
                         <div class="tech-stack">
                             <span class="tech-tag">Python</span>
-                            <span class="tech-tag">ML</span>
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">FastAPI</span>
+                            <span class="tech-tag">React.js</span>
+                            <span class="tech-tag">CNN</span>
                         </div>
-                        <a href="#" class="btn btn-secondary">View Code</a>
+                        <a href="https://github.com/Ashutosh-yadav0001/Pototo-disease" target="_blank"
+                            class="btn btn-secondary" data-hover>View on GitHub</a>
                     </div>
-                    <!-- Placeholder Project 2 -->
-                    <div class="project-card">
-                        <h3>Project Title 2</h3>
-                        <p>Another interesting project description. Highlights key features and technologies used.</p>
+
+                    <!-- Project 3: Coming Soon -->
+                    <div class="project-card coming-soon-card">
+                        <div class="project-icon"><i class="fas fa-rocket"></i></div>
+                        <h3>More Coming Soon</h3>
+                        <p>Currently exploring AI-powered automation, Azure cloud solutions, and data-driven
+                            projects. Stay tuned for new work leveraging my Microsoft certifications and IIT Guwahati
+                            coursework.</p>
                         <div class="tech-stack">
-                            <span class="tech-tag">Java</span>
-                            <span class="tech-tag">Azure</span>
-                        </div>
-                        <a href="#" class="btn btn-secondary">Live Demo</a>
-                    </div>
-                    <!-- Placeholder Project 3 -->
-                    <div class="project-card">
-                        <h3>Project Title 3</h3>
-                        <p>Description for a third project. Showcasing versatility and skills.</p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">Data Viz</span>
+                            <span class="tech-tag">Azure AI</span>
+                            <span class="tech-tag">n8n</span>
                             <span class="tech-tag">Python</span>
                         </div>
-                        <a href="#" class="btn btn-secondary">View Code</a>
+                        <span class="btn btn-secondary coming-soon-btn">In Progress</span>
                     </div>
                 </div>
             </div>
@@ -182,8 +187,7 @@
                         <div class="timeline-date">Oct 2023 – Current</div>
                         <div class="timeline-content">
                             <div class="company-header">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c5/HCL_Technologies_logo.svg"
-                                    alt="HCL Technologies" class="company-logo">
+                                <img src="hcl_logo.jpg" alt="HCL Technologies" class="company-logo">
                                 <div>
                                     <h3>MECM Administrator</h3>
                                     <h4>HCL Technologies Ltd – Lucknow, India</h4>
@@ -196,16 +200,17 @@
                                     supporting organizational modernization initiatives.</li>
                                 <li>Monitoring system health, performing patch management, and preparing daily SCCM
                                     client reports.</li>
-                                <li>Configuring App Protection and Configuration Policies to strengthen endpoint
-                                    security.</li>
+                                <li>Managing device compliance, app deployments, and configuration profiles via
+                                    Microsoft Intune.</li>
+                                <li>Enrolling and managing devices through Intune MDM/MAM, ensuring security baselines
+                                    and conditional access enforcement.</li>
+                                <li>Creating and deploying app protection policies, device configuration profiles, and
+                                    Windows update rings through Intune.</li>
+                                <li>Implementing Windows Autopilot for pre-provisioned device deployments.</li>
+                                <li>Administering Citrix Virtual Apps & Desktops environment, including session
+                                    management and troubleshooting.</li>
                                 <li>Developing remediation scripts to resolve patching issues and improve endpoint
                                     compliance.</li>
-                                <li>Onboarding new applications into Intune to streamline deployment and enhance
-                                    endpoint productivity.</li>
-                                <li>Implementing Windows Autopilot for pre-provisioned device deployments, simplifying
-                                    user onboarding.</li>
-                                <li>Maintaining seamless access and performance in both On-Prem and Cloud Citrix
-                                    environments.</li>
                             </ul>
                         </div>
                     </div>
@@ -213,8 +218,7 @@
                         <div class="timeline-date">Oct 2022 – Oct 2023</div>
                         <div class="timeline-content">
                             <div class="company-header">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c5/HCL_Technologies_logo.svg"
-                                    alt="HCL Technologies" class="company-logo">
+                                <img src="hcl_logo.jpg" alt="HCL Technologies" class="company-logo">
                                 <div>
                                     <h3>Training & Internship</h3>
                                     <h4>HCL Training & Staffing Services Pvt. Ltd. – Lucknow, India</h4>
@@ -239,8 +243,9 @@
                             <img src="iitg_logo.png" alt="IIT Guwahati" class="edu-logo">
                             <div class="edu-details">
                                 <h3>IIT Guwahati</h3>
-                                <p>Data Science and Artificial Intelligence</p>
-                                <span class="edu-year">Pursuing</span>
+                                <p>B.Sc. (Hons) Data Science and Artificial Intelligence</p>
+                                <span class="edu-meta">CGPA: 9.25 (Current)</span>
+                                <span class="edu-year">2023 – Present</span>
                             </div>
                         </div>
                     </div>
@@ -248,9 +253,10 @@
                         <div class="edu-header">
                             <img src="cbse_logo.png" alt="CBSE" class="edu-logo">
                             <div class="edu-details">
-                                <h3>CBSE</h3>
-                                <p>Class 12th</p>
-                                <span class="edu-year">Completed</span>
+                                <h3>CBSE – Senior Secondary (XII)</h3>
+                                <p>Science Stream</p>
+                                <span class="edu-meta">87.2%</span>
+                                <span class="edu-year">2021</span>
                             </div>
                         </div>
                     </div>
@@ -258,11 +264,62 @@
                         <div class="edu-header">
                             <img src="cbse_logo.png" alt="CBSE" class="edu-logo">
                             <div class="edu-details">
-                                <h3>CBSE</h3>
-                                <p>Class 10th</p>
-                                <span class="edu-year">Completed</span>
+                                <h3>CBSE – Secondary (X)</h3>
+                                <p>General</p>
+                                <span class="edu-meta">86.5%</span>
+                                <span class="edu-year">2019</span>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="certifications" class="section">
+            <div class="container">
+                <h2 class="section-title">Certifications</h2>
+                <div class="certs-grid">
+                    <div class="cert-card">
+                        <div class="cert-icon"><i class="fas fa-brain"></i></div>
+                        <h3>Azure AI Engineer Associate</h3>
+                        <p class="cert-code">AI-102</p>
+                        <span class="cert-date">Feb 2026</span>
+                        <span class="cert-level cert-associate">Associate</span>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-icon"><i class="fas fa-laptop"></i></div>
+                        <h3>Endpoint Administrator Associate</h3>
+                        <p class="cert-code">Microsoft 365</p>
+                        <span class="cert-date">Jun 2024</span>
+                        <span class="cert-level cert-associate">Associate</span>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-icon"><i class="fas fa-robot"></i></div>
+                        <h3>Azure AI Fundamentals</h3>
+                        <p class="cert-code">AI-900</p>
+                        <span class="cert-date">May 2024</span>
+                        <span class="cert-level cert-fundamentals">Fundamentals</span>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-icon"><i class="fas fa-cloud"></i></div>
+                        <h3>Microsoft 365 Fundamentals</h3>
+                        <p class="cert-code">MS-900</p>
+                        <span class="cert-date">May 2024</span>
+                        <span class="cert-level cert-fundamentals">Fundamentals</span>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-icon"><i class="fas fa-database"></i></div>
+                        <h3>Azure Data Fundamentals</h3>
+                        <p class="cert-code">DP-900</p>
+                        <span class="cert-date">Apr 2024</span>
+                        <span class="cert-level cert-fundamentals">Fundamentals</span>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-icon"><i class="fas fa-shield-alt"></i></div>
+                        <h3>Azure Fundamentals</h3>
+                        <p class="cert-code">AZ-900</p>
+                        <span class="cert-date">Feb 2024</span>
+                        <span class="cert-level cert-fundamentals">Fundamentals</span>
                     </div>
                 </div>
             </div>
@@ -284,16 +341,20 @@
                         <label for="message">Message</label>
                         <textarea id="message" name="message" rows="5" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary" data-hover>Send Message</button>
+                    <button type="submit" class="btn btn-primary" id="submitBtn" data-hover>Send Message</button>
+                    <div class="form-success" id="formSuccess">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Message sent! I'll get back to you soon.</span>
+                    </div>
                 </form>
                 <div class="social-links">
                     <a href="https://www.linkedin.com/in/ashutosh0001/" target="_blank" aria-label="LinkedIn"
                         data-hover><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/ashutosh0001" target="_blank" aria-label="GitHub" data-hover><i
+                    <a href="https://github.com/Ashutosh-yadav0001" target="_blank" aria-label="GitHub" data-hover><i
                             class="fab fa-github"></i></a>
                     <a href="https://www.instagram.com/ashutosh0001" target="_blank" aria-label="Instagram"
                         data-hover><i class="fab fa-instagram"></i></a>
-                    <a href="mailto:ay346185@gmail.com" aria-label="Email" data-hover><i
+                    <a href="mailto:ashutosh.yadav@op.iitg.ac" aria-label="Email" data-hover><i
                             class="fas fa-envelope"></i></a>
                 </div>
             </div>

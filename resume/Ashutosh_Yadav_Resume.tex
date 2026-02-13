@@ -1,0 +1,253 @@
+%-------------------------
+% IIT Guwahati Resume Template (CCD Format)
+% Author: Ashutosh Yadav
+%-------------------------
+% NOTE: Place the IIT Guwahati logo as 'iitg_logo.png' in the same
+%       directory as this .tex file. You can download it from:
+%       https://www.iitg.ac.in or search "IIT Guwahati logo PNG"
+%-------------------------
+
+\documentclass[a4paper,11pt]{article}
+
+%---------- PACKAGES ----------
+\usepackage[empty]{fullpage}
+\usepackage{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{tabularx}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+
+%---------- PAGE SETUP ----------
+\geometry{
+    left=0.5in,
+    right=0.5in,
+    top=0.4in,
+    bottom=0.4in
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+%---------- SECTION FORMATTING ----------
+\titleformat{\section}{
+    \vspace{-8pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+%---------- CUSTOM COMMANDS ----------
+\newcommand{\resumeItem}[1]{
+    \item\small{#1 \vspace{-2pt}}
+}
+
+\newcommand{\resumeSubheading}[4]{
+    \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+        \textbf{#1} & #2 \\
+        \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+        \textbf{\small#1} & \small #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.2in]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%---------- COLORS ----------
+\definecolor{linkcolor}{HTML}{0066CC}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=linkcolor,
+    urlcolor=linkcolor,
+}
+
+%====================  DOCUMENT START  ====================%
+\begin{document}
+
+%---------- HEADER (IITG CCD FORMAT) ----------
+\begin{table}[ht]
+    \begin{tabularx}{\textwidth}{@{}c X r@{}}
+        % ---------- LEFT: IITG Logo ----------
+        % Uncomment the line below after placing iitg_logo.png in the same folder
+        % \raisebox{-0.5\height}{\includegraphics[width=1.4cm]{iitg_logo.png}}
+        \raisebox{-0.5\height}{\rule{1.4cm}{1.4cm}} % Placeholder — replace with logo
+        &
+        % ---------- CENTER: Student Details ----------
+        \begin{tabular}[t]{@{}l@{}}
+            {\large \textbf{\textit{Ashutosh Yadav}}} \\[2pt]
+            \textbf{Roll No.: 23035010693} \\[1pt]
+            \textbf{Online B.Sc. (Honours)} \\[1pt]
+            \textbf{Data Science and Artificial Intelligence} \\[1pt]
+            \textbf{Indian Institute of Technology, Guwahati}
+        \end{tabular}
+        &
+        % ---------- RIGHT: Contact Info ----------
+        \begin{tabular}[t]{r@{}}
+            +91 9628356778 \\[1pt]
+            +91 8726210198 \\[1pt]
+            \href{mailto:ashutosh.yadav@op.iitg.ac}{ashutosh.yadav@op.iitg.ac} \\[1pt]
+            \href{https://github.com/Ashutosh-yadav0001}{github.com/Ashutosh-yadav0001} \\[1pt]
+            \href{https://www.linkedin.com/in/ashutosh0001/}{linkedin.com/in/ashutosh0001}
+        \end{tabular}
+        \\
+    \end{tabularx}
+\end{table}
+\vspace{-16pt}
+\noindent\rule{\textwidth}{1.2pt}
+\vspace{-10pt}
+
+%---------- EDUCATION ----------
+\section{Education}
+\vspace{2pt}
+\begin{center}
+\small
+\begin{tabularx}{0.97\textwidth}{|l|X|c|c|}
+    \hline
+    \textbf{Degree/Certificate} & \textbf{Institute/Board} & \textbf{CGPA/\%} & \textbf{Year} \\
+    \hline
+    B.Sc. (Hons) in Data Science \& AI & Indian Institute of Technology Guwahati & 9.25 (Current) & 2023 -- Present \\
+    \hline
+    Senior Secondary (XII) & CBSE Board & 87.2\% & 2021 \\
+    \hline
+    Secondary (X) & CBSE Board & 86.5\% & 2019 \\
+    \hline
+\end{tabularx}
+\end{center}
+\vspace{-6pt}
+
+%---------- WORK EXPERIENCE ----------
+\section{Work Experience}
+\resumeSubHeadingListStart
+
+    \resumeSubheading
+        {MECM Administrator}{Oct 2023 -- Present}
+        {HCL Technologies Ltd.}{Lucknow, India}
+    \resumeItemListStart
+        \resumeItem{Working on end-to-end application onboarding and functional testing across DEV, UAT, and Production environments, including preparation of DEV ring documentation.}
+        \resumeItem{Involved in SCCM patching process including SUG creation, downloading updates, and deploying to production.}
+        \resumeItem{Responsible for creation, testing, and implementation of various conditional access policies.}
+        \resumeItem{Creating and deploying remediation scripts for patch failed/error/unknown devices.}
+        \resumeItem{Client remediation and real-time troubleshooting from backend and client side.}
+        \resumeItem{Windows patch troubleshooting from backend and client side; creating SCCM client health check reports on daily basis.}
+        \resumeItem{Implemented Windows Autopilot for pre-provisioned deployment over production.}
+        \resumeItem{Application packaging using Win32 Content Prep tool.}
+        \resumeItem{Captured custom Windows 10 standalone image for next release of product deployment cycle.}
+        \resumeItem{Managing device compliance policies, app deployments, and configuration profiles via Microsoft Intune for endpoint management.}
+        \resumeItem{Enrolling and managing devices through Intune MDM/MAM, ensuring security baselines and conditional access enforcement.}
+        \resumeItem{Creating and deploying app protection policies, device configuration profiles, and Windows update rings through Intune.}
+        \resumeItem{Troubleshooting Intune enrollment failures, sync issues, and policy conflicts across Windows, iOS, and Android devices.}
+        \resumeItem{Administering Citrix Virtual Apps and Desktops environment, including session management and user access troubleshooting.}
+        \resumeItem{Monitoring Citrix infrastructure health and resolving connectivity, performance, and login issues for end users.}
+    \resumeItemListEnd
+
+    \resumeSubheading
+        {Training \& Internship Program}{Oct 2022 -- Oct 2023}
+        {HCL Training \& Staffing Services Pvt. Ltd.}{Lucknow, India}
+    \resumeItemListStart
+        \resumeItem{Completed 1-year training and internship program conducted by HCL Training and Staffing Services.}
+        \resumeItem{Gained hands-on experience in VMware, Azure, RDBMS, Active Directory, ITIL, and Networking.}
+    \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%---------- KEY PROJECT ----------
+\section{Key Project / Client Engagement}
+\resumeSubHeadingListStart
+
+    \resumeProjectHeading
+        {Allianz -- Insurance and Asset Management Company}{Tools: SCCM \& Intune}
+    \resumeItemListStart
+        \resumeItem{Managed end-to-end application onboarding, functional testing, and DEV ring documentation across DEV, UAT, and Production environments.}
+        \resumeItem{Handled SCCM patching lifecycle -- SUG creation, update downloads, and production deployments.}
+        \resumeItem{Created, tested, and implemented conditional access policies; deployed remediation scripts for patch failures.}
+        \resumeItem{Implemented Windows Autopilot for pre-provisioned deployments and captured custom Win10 images.}
+        \resumeItem{Performed application packaging using Win32 Content Prep tool and supported SCCM-related technical issues.}
+    \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%---------- ACADEMIC PROJECTS ----------
+\section{Academic Projects}
+\resumeSubHeadingListStart
+
+    \resumeProjectHeading
+        {Plant Disease Classification Using Deep Learning}{\href{https://github.com/Ashutosh-yadav0001/potato-disease-project}{GitHub}}
+    \resumeItemListStart
+        \resumeItem{Built an end-to-end web application for detecting diseases in Potato and Tomato leaves using Convolutional Neural Networks (CNN) with TensorFlow/Keras.}
+        \resumeItem{Trained CNN models on publicly available datasets achieving high classification accuracy across multiple disease categories.}
+        \resumeItem{Developed a RESTful API backend using Python and FastAPI for model inference and image processing.}
+        \resumeItem{Created a responsive React.js frontend with image upload, real-time prediction display, and prediction history features.}
+        \resumeItem{\textbf{Tech Stack:} Python, TensorFlow/Keras, FastAPI, React.js, NumPy, Pillow}
+    \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%---------- TECHNICAL SKILLS ----------
+\section{Technical Skills}
+\vspace{2pt}
+\small
+\begin{tabularx}{0.97\textwidth}{@{}l X@{}}
+    \textbf{Languages:} & Python, C, R, Java, SQL \\[3pt]
+    \textbf{Data Science \& AI:} & Machine Learning, Data Analysis, Linear Algebra, Optimization, Econometrics \\[3pt]
+    \textbf{Cloud \& Infra:} & Microsoft Azure, VMware, Active Directory, ITIL, Networking \\[3pt]
+    \textbf{Tools \& Platforms:} & SCCM (MECM), Microsoft Intune, Windows Autopilot, Win32 Content Prep \\
+\end{tabularx}
+\vspace{-4pt}
+
+%---------- RELEVANT COURSEWORK ----------
+\section{Relevant Coursework}
+\vspace{2pt}
+\small
+Data Structures \quad $\bullet$ \quad Algorithm Design \& Analysis \quad $\bullet$ \quad Computer System Tools \quad $\bullet$ \quad Data Science \quad $\bullet$ \quad Artificial Intelligence \quad $\bullet$ \quad Linear Algebra \quad $\bullet$ \quad Optimization \quad $\bullet$ \quad Econometrics
+\vspace{-4pt}
+
+%---------- CERTIFICATIONS ----------
+\section{Licenses \& Certifications}
+\vspace{2pt}
+\begin{center}
+\small
+\begin{tabularx}{0.97\textwidth}{|X|c|c|}
+    \hline
+    \textbf{Certification} & \textbf{Earned On} & \textbf{Expires On} \\
+    \hline
+    Microsoft Certified: Azure AI Engineer Associate (AI-102) & Feb 2026 & Feb 2028 \\
+    \hline
+    Microsoft 365 Certified: Endpoint Administrator Associate & Jun 2024 & Jun 2026 \\
+    \hline
+    Microsoft Certified: Azure AI Fundamentals & May 2024 & N/A \\
+    \hline
+\end{tabularx}
+\end{center}
+\vspace{-4pt}
+
+%---------- POSITIONS OF RESPONSIBILITY ----------
+\section{Positions of Responsibility}
+\resumeSubHeadingListStart
+    \resumeProjectHeading
+        {Coordinator, Finance and Investment Club}{IIT Guwahati, 2026}
+    \resumeItemListStart
+        \resumeItem{Organizing workshops, speaker sessions, and events on topics related to personal finance, stock markets, and investment strategies.}
+        \resumeItem{Collaborating with club members to promote financial literacy and awareness among the student community.}
+        \resumeItem{Managing club communications, social media outreach, and coordination with other campus organizations.}
+    \resumeItemListEnd
+\resumeSubHeadingListEnd
+
+\end{document}
