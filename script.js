@@ -279,9 +279,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typedElement) {
         new TypeWriter(typedElement, [
             'MECM Administrator @ HCL Technologies',
-            'Data Science & AI Student @ IIT Guwahati',
-            'Microsoft Certified Azure AI Engineer',
-            'Endpoint Management Specialist',
+            'Aspiring AI Engineer & Developer',
+            'Data Science Student @ IIT Guwahati',
+            'Applying for Software Development Roles',
         ], 70, 35, 2000);
     }
 
