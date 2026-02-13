@@ -1225,3 +1225,29 @@ body {
         opacity: 1;
     }
 }
+/* --- Certification Verify Link --- */
+.cert-verify-link {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--card-border);
+    border-radius: 4px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    transition: all var(--transition-speed);
+}
+
+.cert-verify-link:hover {
+    background: var(--accent-primary);
+    color: var(--bg-color);
+    border-color: var(--accent-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+.cert-verify-link i {
+    font-size: 0.7rem;
+    margin-left: 4px;
+}
+
